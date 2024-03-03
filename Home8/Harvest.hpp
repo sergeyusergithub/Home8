@@ -20,12 +20,12 @@ public:
 	};
 
     // метод для получения веса плода
-	float Harvest_weight(){
+	double Harvest_weight(){
         return harvest_weight_;
 	}
 
 	// метод для задания веса плода
-	void Harvest_weight(float weight){
+	void Harvest_weight(double weight){
         harvest_weight_ = weight;
 	}
 
@@ -42,7 +42,7 @@ public:
 
 private:
 	std::string harvest_name_; // название плода
-	float harvest_weight_;	// вес плода
+	double harvest_weight_;	// вес плода
 	std::string harvest_color_; // цвет плода
 
 };
@@ -69,6 +69,31 @@ public:
 
 private:
     std::string harvest_type_; //тип плода
+
+};
+
+// класс Малина, наследник класса плод
+class Raspberry :public Harvest {
+public:
+
+	// конструктор по умолчанию, создается по умолчанию яблоко с определенными параметрами
+	Raspberry() {
+		Harvest_name("Raspberry");
+		Harvest_weight(1.0);
+		Harvest_color("Red");
+		harvest_type_ = "Berry";
+	}
+
+	// метод для получения типа плода
+	std::string Harvest_type() {
+		return harvest_type_;
+	};
+	~Raspberry() {
+
+	}
+
+private:
+	std::string harvest_type_; //тип плода
 
 };
 

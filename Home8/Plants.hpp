@@ -22,7 +22,6 @@ public:
 };
 
 // класс яблочное деревьево
-
 class AppleTree :public Plants {
 public:
 
@@ -67,6 +66,57 @@ private:
     std::string name_; // название растения
 	std::string scale_harvest_; // размер плода (большой, маленький, средний)
 	int number_harves_; // количество плодов
+    std::string type_; // тип растения
+
+};
+
+
+
+// класс яблочное деревьево
+class RaspberryBush :public Plants {
+public:
+
+    // конструктор по умолчанию
+    RaspberryBush() :RaspberryBush(102) {}
+
+    // конструктор с параметром
+    RaspberryBush(int numb) :name_("RaspberryBush"), scale_harvest_("Small"),
+        number_harves_(numb), type_("Bush") {	}
+
+    // данный метод возвращает указатель на объект плод яблоко
+    Harvest* CreateHarvest() override {
+        return new Raspberry;
+    }
+
+    // метод получения названия растения
+    std::string Name() override {
+        return name_;
+    }
+
+    // метод получения размеров плодов растения
+    std::string Scale() override {
+        return scale_harvest_;
+    }
+
+    // метод получения количества плодов у данного растения
+    // причем, после того как было получено количество плодов
+    // один плод срывается
+    int Number() override {
+        if (number_harves_ == 0) {
+            return 0;
+        }
+        return number_harves_--;
+    }
+
+    // метод возвращающий тип растения
+    std::string Type() {
+        return type_;
+    }
+
+private:
+    std::string name_; // название растения
+    std::string scale_harvest_; // размер плода (большой, маленький, средний)
+    int number_harves_; // количество плодов
     std::string type_; // тип растения
 
 };
